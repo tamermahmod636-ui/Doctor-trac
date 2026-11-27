@@ -33,12 +33,13 @@ jobs:
         with:
           gradle-version: '8.7'
 
-                - name: Prepare Android SDK
+      - name: Prepare Android SDK
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           SDKMGR=$(find "$ANDROID_HOME/cmdline-tools" -name "sdkmanager" | head -n 1)
           yes | "$SDKMGR" --licenses || true
           "$SDKMGR" "platforms;android-35" "build-tools;35.0.0"
+
  
 
       - name: Create local.properties
